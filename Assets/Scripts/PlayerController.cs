@@ -5,13 +5,13 @@ using UnityEngine;
 public class PlayerController : MonoBehaviour
 {
     [SerializeField] private int extraJumpsValue = 1;
-    [SerializeField] private float speed;
-    [SerializeField] private float jumpForce;
-    [SerializeField] private float checkRadius;
-    [SerializeField] private float wallSlidingSpeed;
-    [SerializeField] private float wallForceX;
-    [SerializeField] private float wallForceY;
-    [SerializeField] private float wallJumpTime;
+    [SerializeField] private float speed = 7f;
+    [SerializeField] private float jumpForce = 28f;
+    [SerializeField] private float checkRadius = 0.5f;
+    [SerializeField] private float wallSlidingSpeed = 5f;
+    [SerializeField] private float wallForceX = 7f;
+    [SerializeField] private float wallForceY = 24f;
+    [SerializeField] private float wallJumpTime = 0.05f;
     [SerializeField] private Transform groundCheck;
     [SerializeField] private LayerMask ground;
     [SerializeField] private Transform wallCheck;
@@ -19,7 +19,7 @@ public class PlayerController : MonoBehaviour
 
     private int extraJumps;
     private float horizontalInput;
-    private bool isFacingRight = true;
+    private bool isFacingRight = false;
     private bool isGrounded;
     private bool isWalled;
     private bool isWallSliding;
