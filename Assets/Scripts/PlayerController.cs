@@ -18,7 +18,8 @@ public class PlayerController : MonoBehaviour
     [SerializeField] private LayerMask wall;
 
     private int extraJumps;
-    private float horizontalInput;
+    private float inputHorizontal;
+    private float inputVertical;
     private bool isFacingRight = true;
     private bool isGrounded;
     private bool isWalled;
@@ -38,9 +39,10 @@ public class PlayerController : MonoBehaviour
     private void Update()
     {
         // Update direction
-        horizontalInput = Input.GetAxis("Horizontal");
-        rb.velocity = new Vector2(horizontalInput * speed, rb.velocity.y);
-        if (isFacingRight ^ horizontalInput > 0 && horizontalInput != 0) { Flip(); }
+        inputHorizontal = Input.GetAxis("Horizontal");
+        //inputVertical = Input.GetAxis("Vertical");
+        rb.velocity = new Vector2(inputHorizontal * speed, rb.velocity.y);
+        if (isFacingRight ^ inputHorizontal > 0 && inputHorizontal != 0) { Flip(); }
 
         // Update ground
         isGrounded = IsGrounded();
@@ -79,7 +81,7 @@ public class PlayerController : MonoBehaviour
         }
         if (isWallJumping)
         {
-            rb.velocity = new Vector2(wallForceX * -horizontalInput, wallForceY);
+            rb.velocity = new Vector2(wallForceX * -inputHorizontal, wallForceY);
         }
     }
 
@@ -109,7 +111,7 @@ public class PlayerController : MonoBehaviour
 
     private bool IsWallSliding()
     {
-        return isWalled && !isGrounded && horizontalInput != 0;
+        return isWalled && !isGrounded && inputHorizontal != 0;
     }
 
     private bool KeyJumpDown()
