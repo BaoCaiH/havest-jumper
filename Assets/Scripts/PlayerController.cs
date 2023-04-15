@@ -25,7 +25,6 @@ public class PlayerController : MonoBehaviour
     private bool isWallSliding;
     private bool isWallJumping;
     private Rigidbody2D rb;
-    //private SpriteRenderer sprite;
 
 
     // Start is called before the first frame update
@@ -33,7 +32,6 @@ public class PlayerController : MonoBehaviour
     {
         extraJumps = extraJumpsValue;
         rb = GetComponent<Rigidbody2D>();
-        //sprite = GetComponent<SpriteRenderer>();
     }
 
     // Update is called once per frame
@@ -85,15 +83,7 @@ public class PlayerController : MonoBehaviour
         }
     }
 
-    void FixedUpdate()
-    {
-        //// Update ground
-        //isGrounded = IsGrounded();
-        //// Update direction
-        //horizontalInput = Input.GetAxis("Horizontal");
-        //rb.velocity = new Vector2(horizontalInput * speed, rb.velocity.y);
-        //if (sprite.flipX ^ horizontalInput < 0) { Flip(); }
-    }
+    void FixedUpdate() { }
 
     void Flip()
     {
