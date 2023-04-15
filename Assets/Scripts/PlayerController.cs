@@ -18,6 +18,7 @@ public class PlayerController : MonoBehaviour
     [SerializeField] private LayerMask wall;
 
     private int extraJumps;
+    private int animationState;
     private float inputHorizontal;
     //private float inputVertical;
     private bool isFacingRight = true;
@@ -26,6 +27,8 @@ public class PlayerController : MonoBehaviour
     private bool isWallSliding;
     private bool isWallJumping;
     private Rigidbody2D rb;
+    private Animator anim;
+    //private enum AnimationState { idle, run, jump, fall, doubleJump, wallJump };
 
 
     // Start is called before the first frame update
@@ -33,6 +36,7 @@ public class PlayerController : MonoBehaviour
     {
         extraJumps = extraJumpsValue;
         rb = GetComponent<Rigidbody2D>();
+        anim = GetComponent<Animator>();
     }
 
     // Update is called once per frame
@@ -43,6 +47,8 @@ public class PlayerController : MonoBehaviour
         //inputVertical = Input.GetAxis("Vertical");
         rb.velocity = new Vector2(inputHorizontal * speed, rb.velocity.y);
         if (isFacingRight ^ inputHorizontal > 0 && inputHorizontal != 0) { Flip(); }
+
+        animationState = inputHorizontal != 0 ? 1 : 0;
 
         // Update ground
         isGrounded = IsGrounded();
@@ -83,6 +89,8 @@ public class PlayerController : MonoBehaviour
         {
             rb.velocity = new Vector2(wallForceX * -inputHorizontal, wallForceY);
         }
+
+        UpdateAnimation();
     }
 
     private void FixedUpdate() { }
@@ -122,5 +130,10 @@ public class PlayerController : MonoBehaviour
     private void StopWallJump()
     {
         isWallJumping = false;
+    }
+
+    private void UpdateAnimation()
+    {
+        anim.SetInteger("animationState", animationState);
     }
 }
