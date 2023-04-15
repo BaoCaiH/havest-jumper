@@ -19,7 +19,7 @@ public class PlayerController : MonoBehaviour
 
     private int extraJumps;
     private float inputHorizontal;
-    private float inputVertical;
+    //private float inputVertical;
     private bool isFacingRight = true;
     private bool isGrounded;
     private bool isWalled;
