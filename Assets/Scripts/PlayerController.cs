@@ -19,7 +19,7 @@ public class PlayerController : MonoBehaviour
 
     private int extraJumps;
     private float horizontalInput;
-    private bool isFacingRight = false;
+    private bool isFacingRight = true;
     private bool isGrounded;
     private bool isWalled;
     private bool isWallSliding;
@@ -40,7 +40,7 @@ public class PlayerController : MonoBehaviour
         // Update direction
         horizontalInput = Input.GetAxis("Horizontal");
         rb.velocity = new Vector2(horizontalInput * speed, rb.velocity.y);
-        if (isFacingRight ^ horizontalInput > 0) { Flip(); }
+        if (isFacingRight ^ horizontalInput > 0 && horizontalInput != 0) { Flip(); }
 
         // Update ground
         isGrounded = IsGrounded();
@@ -55,12 +55,12 @@ public class PlayerController : MonoBehaviour
         }
 
         // Verticle movement
-        if (GetKeyJump() && extraJumps > 0 && !isWallSliding)
+        if (KeyJumpDown() && extraJumps > 0 && !isWallSliding)
         {
             rb.velocity = Vector2.up * jumpForce;
             extraJumps--;
         }
-        else if (GetKeyJump() && extraJumps == 0 && isGrounded)
+        else if (KeyJumpDown() && extraJumps == 0 && isGrounded)
         {
             rb.velocity = Vector2.up * jumpForce;
         }
@@ -72,7 +72,7 @@ public class PlayerController : MonoBehaviour
         }
 
         // Wall jumping
-        if (GetKeyJump() && isWallSliding)
+        if (KeyJumpDown() && isWallSliding)
         {
             isWallJumping = true;
             Invoke("StopWallJump", wallJumpTime);
@@ -83,9 +83,9 @@ public class PlayerController : MonoBehaviour
         }
     }
 
-    void FixedUpdate() { }
+    private void FixedUpdate() { }
 
-    void Flip()
+    private void Flip()
     {
         // Instead of flipping sprite, this will flip the collision box as well
         //sprite.flipX = !sprite.flipX;
@@ -112,7 +112,7 @@ public class PlayerController : MonoBehaviour
         return isWalled && !isGrounded && horizontalInput != 0;
     }
 
-    private bool GetKeyJump()
+    private bool KeyJumpDown()
     {
         return Input.GetKeyDown(KeyCode.UpArrow) || Input.GetKeyDown(KeyCode.W);
     }
