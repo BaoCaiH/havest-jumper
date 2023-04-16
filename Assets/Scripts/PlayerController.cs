@@ -161,6 +161,7 @@ public class PlayerController : MonoBehaviour
         if (inputHorizontal != 0 && isGrounded)
         {
             animationState = 1;
+            // Duration of run animation
             PlayDust(0.6f);
         }
         // Jump
@@ -173,15 +174,17 @@ public class PlayerController : MonoBehaviour
         {
             animationState = 3;
         }
-        // Double Jump
+        // Double jump
         else if (rb.velocity.y > 0 && extraJumps == 0)
         {
             animationState = 4;
         }
+        // Wall slide
         else if (isWallSliding)
         {
             animationState = 5;
         }
+        // Default to idle
         else
         {
             animationState = 0;
