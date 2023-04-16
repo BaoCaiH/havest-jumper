@@ -5,7 +5,7 @@ using UnityEngine;
 public class PlayerController : MonoBehaviour
 {
     [SerializeField] private int extraJumpsValue = 1;
-    [SerializeField] private float speed = 7f;
+    [SerializeField] private float speed = 8f;
     [SerializeField] private float jumpForce = 28f;
     [SerializeField] private float checkRadius = 0.5f;
     [SerializeField] private float wallSlidingSpeed = 5f;

@@ -2884,7 +2884,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   extraJumpsValue: 1
-  speed: 7
+  speed: 8
   jumpForce: 28
   checkRadius: 0.5
   wallSlidingSpeed: 5
