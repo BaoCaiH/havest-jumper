@@ -12,15 +12,18 @@ public class PlayerController : MonoBehaviour
     [SerializeField] private float wallForceX = 7f;
     [SerializeField] private float wallForceY = 24f;
     [SerializeField] private float wallJumpTime = 0.05f;
+    [SerializeField] private float dustTime = 0.05f;
     [SerializeField] private Transform groundCheck;
     [SerializeField] private LayerMask ground;
     [SerializeField] private Transform wallCheck;
     [SerializeField] private LayerMask wall;
+    [SerializeField] private ParticleSystem dust;
 
     private int extraJumps;
     private int animationState;
     private float inputHorizontal;
     //private float inputVertical;
+    private float elapsedTime = 0f;
     private bool isFacingRight = true;
     private bool isGrounded;
     private bool isWalled;
@@ -28,7 +31,6 @@ public class PlayerController : MonoBehaviour
     private bool isWallJumping;
     private Rigidbody2D rb;
     private Animator anim;
-    //private enum AnimationState { idle, run, jump, fall, doubleJump, wallJump };
 
 
     // Start is called before the first frame update
@@ -42,6 +44,8 @@ public class PlayerController : MonoBehaviour
     // Update is called once per frame
     private void Update()
     {
+        // Update deltatime
+        elapsedTime += Time.deltaTime;
         // Update direction
         inputHorizontal = Input.GetAxis("Horizontal");
         //inputVertical = Input.GetAxis("Vertical");
@@ -49,8 +53,16 @@ public class PlayerController : MonoBehaviour
         if (isFacingRight ^ inputHorizontal > 0 && inputHorizontal != 0) { Flip(); }
 
         // Update ground
+        if (isGrounded != IsGrounded())
+        {
+            PlayDust();
+        }
         isGrounded = IsGrounded();
         // Update wall
+        if (isWalled != IsWalled())
+        {
+            PlayDust();
+        }
         isWalled = IsWalled();
         isWallSliding = IsWallSliding();
 
@@ -65,10 +77,12 @@ public class PlayerController : MonoBehaviour
         {
             rb.velocity = Vector2.up * jumpForce;
             extraJumps--;
+            PlayDust();
         }
         else if (KeyJumpDown() && extraJumps == 0 && isGrounded)
         {
             rb.velocity = Vector2.up * jumpForce;
+            PlayDust();
         }
 
         // Wall sliding
@@ -86,6 +100,7 @@ public class PlayerController : MonoBehaviour
         if (isWallJumping)
         {
             rb.velocity = new Vector2(wallForceX * -inputHorizontal, wallForceY);
+            PlayDust();
         }
 
         UpdateAnimation();
@@ -130,20 +145,35 @@ public class PlayerController : MonoBehaviour
         isWallJumping = false;
     }
 
+    private void PlayDust(float ?timeDelay = null)
+    {
+        timeDelay = timeDelay == null ? dustTime : timeDelay;
+        if (elapsedTime > timeDelay)
+        {
+            dust.Play();
+            elapsedTime = 0;
+        }
+    }
+
     private void UpdateAnimation()
     {
+        // Run
         if (inputHorizontal != 0 && isGrounded)
         {
             animationState = 1;
+            PlayDust(0.6f);
         }
+        // Jump
         else if (rb.velocity.y > 0 && extraJumps > 0)
         {
             animationState = 2;
         }
+        // Fall
         else if (rb.velocity.y < 0 && !isWallSliding)
         {
             animationState = 3;
         }
+        // Double Jump
         else if (rb.velocity.y > 0 && extraJumps == 0)
         {
             animationState = 4;
