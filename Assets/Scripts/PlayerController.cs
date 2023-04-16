@@ -48,8 +48,6 @@ public class PlayerController : MonoBehaviour
         rb.velocity = new Vector2(inputHorizontal * speed, rb.velocity.y);
         if (isFacingRight ^ inputHorizontal > 0 && inputHorizontal != 0) { Flip(); }
 
-        animationState = inputHorizontal != 0 ? 1 : 0;
-
         // Update ground
         isGrounded = IsGrounded();
         // Update wall
@@ -134,6 +132,30 @@ public class PlayerController : MonoBehaviour
 
     private void UpdateAnimation()
     {
+        if (inputHorizontal != 0 && isGrounded)
+        {
+            animationState = 1;
+        }
+        else if (rb.velocity.y > 0 && extraJumps > 0)
+        {
+            animationState = 2;
+        }
+        else if (rb.velocity.y < 0 && !isWallSliding)
+        {
+            animationState = 3;
+        }
+        else if (rb.velocity.y > 0 && extraJumps == 0)
+        {
+            animationState = 4;
+        }
+        else if (isWallSliding)
+        {
+            animationState = 5;
+        }
+        else
+        {
+            animationState = 0;
+        }
         anim.SetInteger("animationState", animationState);
     }
 }
