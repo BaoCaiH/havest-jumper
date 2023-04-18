@@ -7,13 +7,25 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 6650347866452942724, guid: ce0372872adaa46469b503f398767050, type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 7293598183456022363, guid: 1ddc9afd21fec77489b1248d18f31b68, type: 3}
     - target: {fileID: 6650347866452942726, guid: ce0372872adaa46469b503f398767050, type: 3}
       propertyPath: m_Controller
       value: 
       objectReference: {fileID: 9100000, guid: 79249f369919347b99bddddba2f672ca, type: 2}
+    - target: {fileID: 6650347866452942727, guid: ce0372872adaa46469b503f398767050, type: 3}
+      propertyPath: m_Size.y
+      value: 0.6
+      objectReference: {fileID: 0}
+    - target: {fileID: 6650347866452942727, guid: ce0372872adaa46469b503f398767050, type: 3}
+      propertyPath: m_Offset.y
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 6650347866452942728, guid: ce0372872adaa46469b503f398767050, type: 3}
       propertyPath: m_Name
-      value: Apple_0
+      value: Apple
       objectReference: {fileID: 0}
     - target: {fileID: 6650347866452942729, guid: ce0372872adaa46469b503f398767050, type: 3}
       propertyPath: m_RootOrder
@@ -29,7 +41,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6650347866452942729, guid: ce0372872adaa46469b503f398767050, type: 3}
       propertyPath: m_LocalPosition.z
-      value: 0.07239251
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 6650347866452942729, guid: ce0372872adaa46469b503f398767050, type: 3}
       propertyPath: m_LocalRotation.w
