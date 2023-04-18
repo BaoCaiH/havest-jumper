@@ -1,6 +1,6 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
---- !u!1001 &4648523565368153153
+--- !u!1001 &1280554810627518119
 PrefabInstance:
   m_ObjectHideFlags: 0
   serializedVersion: 2
@@ -10,14 +10,14 @@ PrefabInstance:
     - target: {fileID: 1482217162352682820, guid: 72da0cdf22a064ae885626e7b8861b51, type: 3}
       propertyPath: m_Controller
       value: 
-      objectReference: {fileID: 9100000, guid: 462becf1918474b98bf357f6b9fb9499, type: 2}
+      objectReference: {fileID: 9100000, guid: 2a4ac6569552545ed806f18ac75979e3, type: 2}
     - target: {fileID: 1482217162352682822, guid: 72da0cdf22a064ae885626e7b8861b51, type: 3}
       propertyPath: m_Sprite
       value: 
-      objectReference: {fileID: -5728686177044832811, guid: b1f24b3bc2e2f1d4b858657ad5c115a0, type: 3}
+      objectReference: {fileID: 4138223980208024357, guid: 5100b75572e484e458e4340e2afe9454, type: 3}
     - target: {fileID: 1482217162352682826, guid: 72da0cdf22a064ae885626e7b8861b51, type: 3}
       propertyPath: m_Name
-      value: Bananas
+      value: Kiwi
       objectReference: {fileID: 0}
     - target: {fileID: 1482217162352682827, guid: 72da0cdf22a064ae885626e7b8861b51, type: 3}
       propertyPath: m_RootOrder
@@ -25,11 +25,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1482217162352682827, guid: 72da0cdf22a064ae885626e7b8861b51, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 0.86
+      value: -5.6
       objectReference: {fileID: 0}
     - target: {fileID: 1482217162352682827, guid: 72da0cdf22a064ae885626e7b8861b51, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 5.01
+      value: 1.23
       objectReference: {fileID: 0}
     - target: {fileID: 1482217162352682827, guid: 72da0cdf22a064ae885626e7b8861b51, type: 3}
       propertyPath: m_LocalPosition.z
@@ -41,15 +41,15 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1482217162352682827, guid: 72da0cdf22a064ae885626e7b8861b51, type: 3}
       propertyPath: m_LocalRotation.x
-      value: 0
+      value: -0
       objectReference: {fileID: 0}
     - target: {fileID: 1482217162352682827, guid: 72da0cdf22a064ae885626e7b8861b51, type: 3}
       propertyPath: m_LocalRotation.y
-      value: 0
+      value: -0
       objectReference: {fileID: 0}
     - target: {fileID: 1482217162352682827, guid: 72da0cdf22a064ae885626e7b8861b51, type: 3}
       propertyPath: m_LocalRotation.z
-      value: 0
+      value: -0
       objectReference: {fileID: 0}
     - target: {fileID: 1482217162352682827, guid: 72da0cdf22a064ae885626e7b8861b51, type: 3}
       propertyPath: m_LocalEulerAnglesHint.x
