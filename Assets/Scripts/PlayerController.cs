@@ -18,6 +18,7 @@ public class PlayerController : MonoBehaviour
     [SerializeField] private Transform wallCheck;
     [SerializeField] private LayerMask wall;
     [SerializeField] private ParticleSystem dust;
+    [SerializeField] private AudioSource sfxJump;
 
     private int extraJumps;
     private int animationState;
@@ -78,11 +79,13 @@ public class PlayerController : MonoBehaviour
             rb.velocity = Vector2.up * jumpForce;
             extraJumps--;
             PlayDust();
+            sfxJump.Play();
         }
         else if (KeyJumpDown() && extraJumps == 0 && isGrounded)
         {
             rb.velocity = Vector2.up * jumpForce;
             PlayDust();
+            sfxJump.Play();
         }
 
         // Wall sliding
@@ -101,6 +104,7 @@ public class PlayerController : MonoBehaviour
         {
             rb.velocity = new Vector2(wallForceX * -inputHorizontal, wallForceY);
             PlayDust();
+            sfxJump.Play();
         }
 
         UpdateAnimation();
