@@ -3095,7 +3095,7 @@ MonoBehaviour:
   extraJumpsValue: 1
   speed: 8
   jumpForce: 28
-  checkRadius: 0.5
+  checkRadius: 0.1
   wallSlidingSpeed: 2
   wallForceX: 7
   wallForceY: 24
