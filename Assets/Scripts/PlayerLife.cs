@@ -5,7 +5,7 @@ using UnityEngine.SceneManagement;
 
 public class PlayerLife : MonoBehaviour
 {
-    //[SerializeField] private AudioSource deathSFX;
+    [SerializeField] private AudioSource sfxDead;
 
     private Animator anim;
     private Rigidbody2D rb;
@@ -34,7 +34,7 @@ public class PlayerLife : MonoBehaviour
     private void Die()
     {
         anim.SetTrigger("dead");
-        //deathSFX.Play();
+        sfxDead.Play();
         rb.bodyType = RigidbodyType2D.Static;
     }
 
