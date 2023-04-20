@@ -9,7 +9,7 @@ public class PlayerCollect : MonoBehaviour
     private void OnTriggerEnter2D(Collider2D collision)
     {
         GameObject collided = collision.gameObject;
-        Animator anim = collision.gameObject.GetComponent<Animator>();
+        Animator anim = collided.GetComponent<Animator>();
         if (collided.CompareTag("Collectibles"))
         {
             anim.SetTrigger("collect");
