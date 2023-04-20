@@ -4,10 +4,7 @@ using UnityEngine;
 
 public class PlayerCollect : MonoBehaviour
 {
-    //private int fruits = 0;
-
-    //[SerializeField] private Text fruitsCount;
-    //[SerializeField] private AudioSource collectionSFX;
+    [SerializeField] private AudioSource sfxCollect;
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
@@ -16,10 +13,7 @@ public class PlayerCollect : MonoBehaviour
         if (collided.CompareTag("Collectibles"))
         {
             anim.SetTrigger("collect");
-            //Destroy(collided);
-            //collectionSFX.Play();
-            //fruits++;
-            //fruitsCount.text = "Fruits: " + fruits;
+            sfxCollect.Play();
         }
     }
 }
