@@ -56,3 +56,6 @@ TagManager:
   - name: Help
     uniqueID: 3928873065
     locked: 0
+  - name: Scene
+    uniqueID: 2344320501
+    locked: 0
